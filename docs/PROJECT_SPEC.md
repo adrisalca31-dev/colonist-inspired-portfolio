@@ -921,3 +921,425 @@ Where applicable, the implementation may follow:
 **Database → API → Frontend → Integration**
 
 Frontend-only features should not be forced into a backend architecture when a backend provides no meaningful value.
+
+## 9. Technical Requirements
+
+The portfolio should be developed as a modern full-stack web application with a clear separation between frontend, backend, and data persistence.
+
+Technical decisions should prioritize maintainability, performance, simplicity, and relevance to the project's goals.
+
+### 9.1 Frontend
+
+The frontend should use:
+
+* React.
+* TypeScript.
+* CSS.
+
+The frontend should be responsible for:
+
+* Rendering the user interface.
+* Managing client-side interaction and state.
+* Navigation.
+* Animations and transitions.
+* Responsive behavior.
+* Communicating with the backend through APIs.
+* Presenting project and profile information.
+
+The frontend should not communicate directly with the database.
+
+### 9.2 Backend
+
+The backend should use:
+
+* Node.js.
+* TypeScript.
+
+The backend should be responsible for:
+
+* Providing REST APIs.
+* Business logic.
+* Data validation.
+* Communication with the database.
+* Server-side operations.
+* Security-sensitive operations.
+* Integration with external services when necessary.
+
+The backend should maintain a clear separation between routing, business logic, data access, and infrastructure concerns.
+
+### 9.3 API
+
+The application should use REST APIs for communication between the frontend and backend.
+
+API design should prioritize:
+
+* Clear resource-oriented endpoints.
+* Consistent HTTP methods.
+* Appropriate status codes.
+* Input validation.
+* Error handling.
+* Consistent response formats.
+* Security.
+* Maintainability.
+
+The API should be documented as the project develops.
+
+### 9.4 Database
+
+The primary database should be PostgreSQL.
+
+The database should be used when persistent data provides meaningful value to the application.
+
+Potential data models include:
+
+* Projects.
+* Skills.
+* Achievements.
+* Experiments.
+* Other portfolio-related data introduced in future features.
+
+Database schemas should be intentionally designed rather than created solely to demonstrate database usage.
+
+### 9.5 Interactive Rendering
+
+PixiJS may be introduced for interactive or game-inspired experiences if it provides meaningful technical or UX value.
+
+PixiJS should not be introduced solely because it has historical relevance to Colonist.
+
+The project should first determine whether React and standard web technologies are sufficient for a feature.
+
+### 9.6 State Management
+
+Client-side state management should remain as simple as possible.
+
+The project should initially use React's built-in state management mechanisms where appropriate.
+
+A dedicated state management library should only be introduced if application complexity demonstrates a real need for it.
+
+### 9.7 Styling
+
+The styling system should prioritize:
+
+* Reusable styles.
+* Consistent design tokens.
+* Responsive layouts.
+* Maintainability.
+* Clear component boundaries.
+* Accessible interaction states.
+
+The project should avoid excessive dependencies for styling unless a specific dependency provides significant value.
+
+### 9.8 Performance
+
+Performance should be considered throughout development rather than only during final polishing.
+
+The application should prioritize:
+
+* Fast initial loading.
+* Efficient asset usage.
+* Optimized images.
+* Appropriate code splitting.
+* Minimal unnecessary JavaScript.
+* Efficient rendering.
+* Responsive interactions.
+
+Interactive features should not unnecessarily degrade the performance of the core portfolio experience.
+
+### 9.9 Responsive Design
+
+The application must support:
+
+* Desktop.
+* Laptop.
+* Tablet.
+* Mobile.
+
+Responsive behavior should be considered during feature development rather than treated as a final-stage task.
+
+### 9.10 Accessibility
+
+The application should follow modern accessibility practices where appropriate.
+
+Important considerations include:
+
+* Semantic HTML.
+* Keyboard navigation.
+* Focus states.
+* Sufficient contrast.
+* Accessible forms.
+* Alternative text for meaningful images.
+* Reduced-motion considerations.
+* Avoiding interaction patterns that depend exclusively on sound, color, or animation.
+
+### 9.11 Security
+
+Security should be considered even though the application is primarily a portfolio.
+
+The project should include appropriate protections against common web application issues, including:
+
+* Input validation.
+* Secure handling of environment variables.
+* Protection of secrets.
+* Appropriate API validation.
+* Safe database queries.
+* Appropriate authentication practices if authentication is introduced.
+* Dependency management.
+
+Sensitive information should never be committed to the public repository.
+
+### 9.12 External Services
+
+External services may be introduced when they provide meaningful functionality.
+
+Potential integrations include:
+
+* GitHub.
+* Analytics.
+* Deployment platforms.
+* AI services.
+* Other APIs.
+
+External dependencies should be evaluated based on:
+
+* Value.
+* Reliability.
+* Cost.
+* Security.
+* Complexity.
+* Long-term maintainability.
+
+### 9.13 Deployment
+
+The application should eventually be deployed to a publicly accessible environment.
+
+The deployment architecture should be selected based on:
+
+* Cost.
+* Simplicity.
+* Performance.
+* Reliability.
+* Compatibility with the selected stack.
+
+A custom domain may be added later if the cost and value are justified.
+
+### 9.14 Environment Configuration
+
+Environment-specific configuration should be separated from source code.
+
+Secrets and environment-specific values should be stored using environment variables or the configuration mechanisms provided by the deployment platform.
+
+Environment files containing secrets must not be committed to Git.
+
+### 9.15 Technology Selection Principle
+
+No technology should be introduced solely to increase the apparent complexity of the project.
+
+Every significant dependency or architectural decision should answer:
+
+**What problem does this solve?**
+
+**Why is this technology appropriate?**
+
+**What alternatives were considered?**
+
+**Is the added complexity justified?**
+
+Technical decisions with meaningful architectural impact should be documented.
+
+## 10. AI Development Methodology
+
+AI will be a central part of the development process.
+
+The project will follow an AI-assisted development model in which AI is responsible for generating and modifying a significant portion of the implementation, while the human developer remains responsible for product decisions, requirements, review, testing, and final validation.
+
+### 10.1 Development Cycle
+
+Each feature should generally follow:
+
+**Requirement → Specification → AI Implementation → Testing → Human Review → Iteration → Integration**
+
+### 10.2 AI Responsibilities
+
+AI may be used for:
+
+* Research and technical exploration.
+* Architecture proposals.
+* Code generation.
+* Refactoring.
+* Debugging.
+* Test generation.
+* Documentation.
+* Prototyping.
+* Performance analysis.
+
+### 10.3 Human Responsibilities
+
+The human developer is responsible for:
+
+* Defining product requirements.
+* Establishing priorities.
+* Making final technical decisions.
+* Reviewing generated code.
+* Validating behavior.
+* Testing the implementation.
+* Identifying incorrect or unnecessary AI output.
+* Approving or rejecting changes.
+
+### 10.4 Context Before Code
+
+AI should receive sufficient project context before implementing significant features.
+
+Relevant context may include:
+
+* Project specification.
+* Architecture.
+* Existing code.
+* Technical constraints.
+* Feature requirements.
+* Definition of Done.
+
+AI should not be asked to implement major features without understanding the existing project structure.
+
+### 10.5 Incremental Development
+
+Large tasks should be divided into smaller, independently verifiable features.
+
+The project should favor vertical slices over large batches of unrelated implementation.
+
+### 10.6 Validation
+
+AI-generated code must not be considered correct simply because it compiles or appears to work.
+
+Changes should be validated through:
+
+* Automated tests.
+* Manual testing.
+* Code review.
+* Browser testing.
+* Error inspection.
+* Appropriate performance checks.
+
+### 10.7 AI as a Development Tool
+
+The goal is not to minimize AI usage.
+
+The goal is to maximize the value obtained from AI while maintaining software quality and human technical judgment.
+
+The project should continuously experiment with different AI workflows and tools when doing so provides meaningful value.
+
+## 11. Testing Strategy
+
+Testing will be integrated into the development process rather than postponed until the end of the project.
+
+The project will use an appropriate combination of:
+
+* Unit tests for isolated logic.
+* Integration tests for interactions between application layers.
+* End-to-end tests for important user flows.
+* Manual testing for visual and interactive behavior.
+
+The testing stack will be selected during implementation based on the chosen architecture.
+
+Every significant feature should have a clear validation strategy before being considered complete.
+
+Critical user flows, such as entering the portfolio and exploring projects, should eventually have automated end-to-end coverage.
+
+AI-generated tests should also be reviewed rather than accepted automatically.
+
+## 12. Git & Version Control
+
+Git and GitHub will be used from the beginning of the project.
+
+Development should produce meaningful commits that represent logical units of work.
+
+Commits should:
+
+* Describe the change clearly.
+* Avoid unrelated modifications.
+* Represent meaningful progress.
+* Keep the project history understandable.
+
+Features should generally be developed through the project's vertical-slice workflow.
+
+The repository will be public unless a specific reason requires temporary private development.
+
+Documentation should be updated when significant architectural or product decisions change.
+
+## 13. Definition of Done
+
+A feature is considered complete when:
+
+* The intended functionality works.
+* The implementation satisfies its requirements.
+* Relevant tests pass.
+* Important edge cases have been considered.
+* No known critical errors remain.
+* The implementation has been reviewed.
+* The feature works across supported screen sizes when applicable.
+* Documentation has been updated when necessary.
+* The change is committed to Git with a meaningful commit message.
+
+A feature should not be considered complete solely because the AI generated the requested code.
+
+## 14. Roadmap
+
+### Phase 0 — Project Definition
+
+* Define product vision.
+* Define user experience.
+* Define visual direction.
+* Define technical direction.
+* Establish development methodology.
+
+### Phase 1 — Foundation
+
+* Initialize application architecture.
+* Establish frontend and backend structure.
+* Configure development tooling.
+* Configure GitHub and CI.
+* Establish initial deployment.
+
+### Phase 2 — Portfolio MVP
+
+* Build entry experience.
+* Build main portfolio shell.
+* Build navigation.
+* Build profile and about sections.
+* Build project presentation.
+
+### Phase 3 — Dynamic Portfolio
+
+* Introduce backend.
+* Introduce PostgreSQL.
+* Build project API.
+* Connect project data to the frontend.
+
+### Phase 4 — Interactive Experience
+
+* Add advanced interactions.
+* Add project demonstrations.
+* Evaluate PixiJS and other interactive technologies.
+* Introduce game-inspired features where appropriate.
+
+### Phase 5 — Technical Showcase
+
+* Integrate important personal projects.
+* Add selected interactive demonstrations.
+* Add GitHub integration where useful.
+* Showcase technical experiments.
+
+### Phase 6 — Polish
+
+* Performance.
+* Accessibility.
+* Responsive design.
+* Testing.
+* Security.
+* Visual refinement.
+* Deployment and monitoring.
+
+### Phase 7 — Colonist-Oriented Finalization
+
+* Review the portfolio from the perspective of a Colonist recruiter and developer.
+* Improve relevant technical and product demonstrations.
+* Prepare the project for potential future application.
