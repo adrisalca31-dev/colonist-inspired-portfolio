@@ -1,6 +1,12 @@
-* {
-  box-sizing: border-box;
+:root {
+  font-family: "Open Sans", "Segoe UI", Arial, sans-serif;
+  color: #f8fcff;
+  background: #071d47;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
 }
+
+* { box-sizing: border-box; }
 
 html,
 body,
@@ -10,18 +16,27 @@ body,
   margin: 0;
 }
 
-html {
-  font-family: "Open Sans", Arial, sans-serif;
-  background: #177fde;
-}
-
-body {
-  min-height: 100vh;
-}
+body { min-height: 100vh; }
 
 button,
 input,
 textarea,
-select {
-  font: inherit;
+select { font: inherit; }
+
+button { -webkit-tap-highlight-color: transparent; }
+
+:focus-visible {
+  outline: 3px solid #d8efff;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
