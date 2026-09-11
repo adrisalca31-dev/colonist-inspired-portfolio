@@ -1,7 +1,8 @@
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useState } from "react";
-import { LandingFooter } from "./components/landing/LandingFooter";
+import { DiceLoader } from "./components/landing/DiceLoader";
 import { LandingBackground } from "./components/landing/LandingBackground";
+import { LandingFooter } from "./components/landing/LandingFooter";
 import { LandingHeader } from "./components/landing/LandingHeader";
 import { LandingHero } from "./components/landing/LandingHero";
 import "./styles/tokens.css";
@@ -16,7 +17,7 @@ function App() {
   };
 
   const handleTransitionComplete = () => {
-    console.log("Portfolio loading...");
+    setIsEntering(false);
   };
 
   return (
@@ -36,22 +37,13 @@ function App() {
             initial={shouldReduceMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: shouldReduceMotion ? 0 : 0.3 }}
-            onAnimationComplete={handleTransitionComplete}
+            transition={{
+              duration: shouldReduceMotion ? 0 : 0.25,
+            }}
             aria-live="polite"
           >
             <div className="entry-overlay__content">
-              <motion.div
-                className="entry-overlay__loader"
-                animate={shouldReduceMotion ? undefined : { rotate: 360 }}
-                transition={{
-                  duration: 0.7,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-              />
-
-              <span>ENTERING PORTFOLIO</span>
+              <DiceLoader onComplete={handleTransitionComplete} />
             </div>
           </motion.div>
         )}

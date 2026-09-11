@@ -38,3 +38,14 @@ export function playUiClick() {
   oscillator.start();
   oscillator.stop(context.currentTime + 0.08);
 }
+
+const diceRollAudio = new Audio("/audio/dice-roll.wav");
+
+diceRollAudio.preload = "auto";
+diceRollAudio.volume = 0.8;
+
+export function playDiceRoll() {
+  diceRollAudio.currentTime = 0;
+
+  void diceRollAudio.play();
+}

@@ -774,3 +774,68 @@
     font-size: 0.4rem;
   }
 }
+
+/* ─────────────────────────────────────────
+   Dice entry transition
+   ───────────────────────────────────────── */
+
+.dice-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.dice-loader__dice {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.dice-loader__die {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  padding: 8px;
+  box-sizing: border-box;
+
+  border-radius: 11px;
+  background: linear-gradient(
+    145deg,
+    #fff8e9 0%,
+    #eadfc9 100%
+  );
+
+  border: 2px solid rgba(255, 255, 255, 0.8);
+
+  box-shadow:
+    0 6px 0 rgba(40, 25, 10, 0.35),
+    0 10px 20px rgba(0, 0, 0, 0.25),
+    inset 0 2px 0 rgba(255, 255, 255, 0.9);
+}
+
+.dice-loader__pip {
+  width: 8px;
+  height: 8px;
+  align-self: center;
+  justify-self: center;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.dice-loader__pip--active {
+  background: #263342;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.dice-loader__label {
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: rgba(255, 245, 225, 0.9);
+  text-transform: uppercase;
+}

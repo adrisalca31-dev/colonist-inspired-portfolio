@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import badgeUrl from "../../assets/landing/portfolio-badge.png";
-import { playUiClick } from "../../audio/uiSounds";
+import { playDiceRoll } from "../../audio/uiSounds";
 
 type LandingHeroProps = {
   onEnter: () => void;
@@ -79,12 +79,12 @@ export function LandingHero({ onEnter }: LandingHeroProps) {
           type="button"
           className="game-button game-button--primary"
           onClick={() => {
-            playUiClick();
+            playDiceRoll();
             onEnter();
          }}
       >
           <span className="game-button__label">
-            ENTER PORTFOLIO
+            ROLL THE DICE
           </span>
 
           <span
