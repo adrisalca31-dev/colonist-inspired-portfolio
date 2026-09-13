@@ -5,6 +5,11 @@ type LobbyProps = {
 };
 
 export function Lobby({ onNavigate }: LobbyProps) {
+  const handleNavigate = (destination: string) => {
+    playUiClick();
+    onNavigate(destination);
+  };
+
   return (
     <main className="lobby">
       <img
@@ -18,52 +23,49 @@ export function Lobby({ onNavigate }: LobbyProps) {
         <button
           type="button"
           className="lobby__hotspot lobby__hotspot--about"
-          onClick={() => onNavigate("about")}
+          onClick={() => handleNavigate("about")}
           aria-label="Open About Me"
         />
 
         <button
           type="button"
           className="lobby__hotspot lobby__hotspot--projects"
-          onClick={() => {
-            playUiClick();
-            onNavigate("projects");
-             }}
-            aria-label="Open Projects"
+          onClick={() => handleNavigate("projects")}
+          aria-label="Open Projects"
         />
 
         <button
           type="button"
           className="lobby__hotspot lobby__hotspot--skills"
-          onClick={() => onNavigate("skills")}
+          onClick={() => handleNavigate("skills")}
           aria-label="Open Skills"
         />
 
         <button
           type="button"
           className="lobby__hotspot lobby__hotspot--ai-lab"
-          onClick={() => onNavigate("ai-lab")}
+          onClick={() => handleNavigate("ai-lab")}
           aria-label="Open AI Lab"
         />
 
         <button
           type="button"
           className="lobby__hotspot lobby__hotspot--journey"
-          onClick={() => onNavigate("journey")}
+          onClick={() => handleNavigate("journey")}
           aria-label="Open Developer Journey"
         />
 
         <button
           type="button"
           className="lobby__hotspot lobby__hotspot--contact"
-          onClick={() => onNavigate("contact")}
+          onClick={() => handleNavigate("contact")}
           aria-label="Open Contact"
         />
 
         <button
           type="button"
           className="lobby__hotspot lobby__hotspot--easter-egg"
-          onClick={() => onNavigate("easter-egg")}
+          onClick={() => handleNavigate("easter-egg")}
           aria-label="Discover secret interaction"
         />
       </div>

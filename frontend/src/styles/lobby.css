@@ -1,3 +1,7 @@
+/* =========================================================
+   LOBBY
+   ========================================================= */
+
 .lobby {
   position: fixed;
   inset: 0;
@@ -30,6 +34,11 @@
   display: block;
 }
 
+
+/* =========================================================
+   HOTSPOTS
+   ========================================================= */
+
 .lobby__hotspots {
   position: absolute;
   z-index: 2;
@@ -50,6 +59,24 @@
   pointer-events: auto;
 }
 
+
+/* =========================================================
+   HOTSPOT POSITIONS
+   ========================================================= */
+
+/* ABOUT ME */
+
+.lobby__hotspot--about {
+  left: 30%;
+  top: 12%;
+  width: 13%;
+  height: 30%;
+  border-radius: 10px;
+}
+
+
+/* PROJECTS */
+
 .lobby__hotspot--projects {
   left: 18%;
   top: 39%;
@@ -58,21 +85,82 @@
   border-radius: 18px;
 }
 
-.lobby__hotspot--projects::before {
+
+/* SKILLS */
+
+.lobby__hotspot--skills {
+  left: 49%;
+  top: 15%;
+  width: 15%;
+  height: 32%;
+  border-radius: 10px;
+}
+
+
+/* AI LAB */
+
+.lobby__hotspot--ai-lab {
+  left: 70%;
+  top: 50%;
+  width: 15%;
+  height: 33%;
+  border-radius: 18px;
+}
+
+
+/* JOURNEY */
+
+.lobby__hotspot--journey {
+  left: 53%;
+  top: 48%;
+  width: 7%;
+  height: 13%;
+  border-radius: 8px;
+}
+
+
+/* CONTACT */
+
+.lobby__hotspot--contact {
+  left: 62%;
+  top: 48%;
+  width: 7%;
+  height: 13%;
+  border-radius: 8px;
+}
+
+
+/* =========================================================
+   HOTSPOT GLOW
+   ========================================================= */
+
+.lobby__hotspot::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
+  background: transparent;
   box-shadow:
     0 0 0 2px rgba(255, 196, 92, 0),
     0 0 24px rgba(255, 196, 92, 0);
   transition:
     box-shadow 180ms ease,
     transform 180ms ease;
+  pointer-events: none;
 }
 
-.lobby__hotspot--projects::after {
-  content: "PROJECTS";
+.lobby__hotspot:hover::before {
+  box-shadow:
+    0 0 0 2px rgba(255, 196, 92, 0.65),
+    0 0 24px rgba(255, 196, 92, 0.35);
+}
+
+
+/* =========================================================
+   HOTSPOT LABEL
+   ========================================================= */
+
+.lobby__hotspot::after {
   position: absolute;
   left: 50%;
   bottom: -42px;
@@ -95,16 +183,44 @@
   pointer-events: none;
 }
 
-.lobby__hotspot--projects:hover::before {
-  box-shadow:
-    0 0 0 2px rgba(255, 196, 92, 0.65),
-    0 0 24px rgba(255, 196, 92, 0.35);
-}
-
-.lobby__hotspot--projects:hover::after {
+.lobby__hotspot:hover::after {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
+
+
+/* =========================================================
+   HOTSPOT LABELS
+   ========================================================= */
+
+.lobby__hotspot--about::after {
+  content: "ABOUT ME";
+}
+
+.lobby__hotspot--projects::after {
+  content: "PROJECTS";
+}
+
+.lobby__hotspot--skills::after {
+  content: "SKILLS";
+}
+
+.lobby__hotspot--ai-lab::after {
+  content: "AI LAB";
+}
+
+.lobby__hotspot--journey::after {
+  content: "JOURNEY";
+}
+
+.lobby__hotspot--contact::after {
+  content: "CONTACT";
+}
+
+
+/* =========================================================
+   PLACEHOLDER PAGES
+   ========================================================= */
 
 .placeholder-page {
   min-height: 100dvh;
