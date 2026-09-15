@@ -4,6 +4,7 @@ import LobbyPage from "./pages/LobbyPage";
 import "./styles/tokens.css";
 import "./styles/landing.css";
 import "./styles/lobby.css";
+import ProjectsPage from "./pages/ProjectsPage";
 
 type PlaceholderPageProps = {
   title: string;
@@ -51,12 +52,7 @@ function AppRoutes() {
 
       <Route
         path="/projects"
-        element={
-          <PlaceholderPage
-            title="Projects"
-            description="This section will showcase my projects, experiments, and development work."
-          />
-        }
+        element={<ProjectsPage onBack={() => navigate("/lobby")} />}
       />
 
       <Route
