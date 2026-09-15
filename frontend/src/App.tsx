@@ -1,235 +1,124 @@
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { useState } from "react";
-import { DiceLoader } from "./components/landing/DiceLoader";
-import { LandingBackground } from "./components/landing/LandingBackground";
-import { LandingFooter } from "./components/landing/LandingFooter";
-import { LandingHeader } from "./components/landing/LandingHeader";
-import { LandingHero } from "./components/landing/LandingHero";
-import { Lobby } from "./components/lobby/Lobby";
+import { BrowserRouter, Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import LandingPage from "./pages/LandingPage";
+import LobbyPage from "./pages/LobbyPage";
 import "./styles/tokens.css";
 import "./styles/landing.css";
 import "./styles/lobby.css";
 
-type View =
-  | "landing"
-  | "lobby"
-  | "projects"
-  | "about"
-  | "skills"
-  | "ai-lab"
-  | "journey"
-  | "contact";
+type PlaceholderPageProps = {
+  title: string;
+  description: string;
+};
 
-function App() {
-  const [view, setView] = useState<View>("landing");
-  const [isEntering, setIsEntering] = useState(false);
-  const shouldReduceMotion = useReducedMotion();
-
-  const handleEnter = () => {
-    setIsEntering(true);
-  };
-
-  const handleTransitionComplete = () => {
-    setIsEntering(false);
-    setView("lobby");
-  };
-
-  const handleNavigate = (destination: string) => {
-    if (
-      destination === "projects" ||
-      destination === "about" ||
-      destination === "skills" ||
-      destination === "ai-lab" ||
-      destination === "journey" ||
-      destination === "contact"
-    ) {
-      setView(destination);
-    }
-  };
-
-  if (view === "lobby") {
-    return <Lobby onNavigate={handleNavigate} />;
-  }
-
-  if (view === "projects") {
-    return (
-      <main className="placeholder-page">
-        <button
-          type="button"
-          className="placeholder-page__back"
-          onClick={() => setView("lobby")}
-        >
-          ← BACK TO LOBBY
-        </button>
-
-        <div className="placeholder-page__content">
-          <p className="placeholder-page__eyebrow">PORTFOLIO SECTION</p>
-
-          <h1>Projects</h1>
-
-          <p>
-            This section will showcase my projects, experiments, and
-            development work.
-          </p>
-        </div>
-      </main>
-    );
-  }
-
-  if (view === "about") {
-    return (
-      <main className="placeholder-page">
-        <button
-          type="button"
-          className="placeholder-page__back"
-          onClick={() => setView("lobby")}
-        >
-          ← BACK TO LOBBY
-        </button>
-
-        <div className="placeholder-page__content">
-          <p className="placeholder-page__eyebrow">PORTFOLIO SECTION</p>
-
-          <h1>About Me</h1>
-
-          <p>
-            This section will introduce who I am, what I care about, and what
-            drives me as a developer.
-          </p>
-        </div>
-      </main>
-    );
-  }
-
-  if (view === "skills") {
-    return (
-      <main className="placeholder-page">
-        <button
-          type="button"
-          className="placeholder-page__back"
-          onClick={() => setView("lobby")}
-        >
-          ← BACK TO LOBBY
-        </button>
-
-        <div className="placeholder-page__content">
-          <p className="placeholder-page__eyebrow">PORTFOLIO SECTION</p>
-
-          <h1>Skills</h1>
-
-          <p>
-            This section will showcase my technical skills, tools, and
-            technologies.
-          </p>
-        </div>
-      </main>
-    );
-  }
-
-  if (view === "ai-lab") {
-    return (
-      <main className="placeholder-page">
-        <button
-          type="button"
-          className="placeholder-page__back"
-          onClick={() => setView("lobby")}
-        >
-          ← BACK TO LOBBY
-        </button>
-
-        <div className="placeholder-page__content">
-          <p className="placeholder-page__eyebrow">PORTFOLIO SECTION</p>
-
-          <h1>AI Lab</h1>
-
-          <p>
-            This section will showcase AI experiments, workflows, and projects
-            built with AI-assisted development.
-          </p>
-        </div>
-      </main>
-    );
-  }
-
-  if (view === "journey") {
-    return (
-      <main className="placeholder-page">
-        <button
-          type="button"
-          className="placeholder-page__back"
-          onClick={() => setView("lobby")}
-        >
-          ← BACK TO LOBBY
-        </button>
-
-        <div className="placeholder-page__content">
-          <p className="placeholder-page__eyebrow">PORTFOLIO SECTION</p>
-
-          <h1>Developer Journey</h1>
-
-          <p>
-            This section will tell the story of my growth, learning process,
-            and evolution as a developer.
-          </p>
-        </div>
-      </main>
-    );
-  }
-
-  if (view === "contact") {
-    return (
-      <main className="placeholder-page">
-        <button
-          type="button"
-          className="placeholder-page__back"
-          onClick={() => setView("lobby")}
-        >
-          ← BACK TO LOBBY
-        </button>
-
-        <div className="placeholder-page__content">
-          <p className="placeholder-page__eyebrow">PORTFOLIO SECTION</p>
-
-          <h1>Contact</h1>
-
-          <p>
-            This section will contain my contact information and professional
-            links.
-          </p>
-        </div>
-      </main>
-    );
-  }
+function PlaceholderPage({ title, description }: PlaceholderPageProps) {
+  const navigate = useNavigate();
 
   return (
-    <div className="landing-page">
-      <LandingBackground />
+    <main className="placeholder-page">
+      <button
+        type="button"
+        className="placeholder-page__back"
+        onClick={() => navigate("/lobby")}
+      >
+        ← BACK TO LOBBY
+      </button>
 
-      <LandingHeader />
+      <div className="placeholder-page__content">
+        <p className="placeholder-page__eyebrow">PORTFOLIO SECTION</p>
 
-      <LandingHero onEnter={handleEnter} />
+        <h1>{title}</h1>
 
-      <LandingFooter />
+        <p>{description}</p>
+      </div>
+    </main>
+  );
+}
 
-      <AnimatePresence>
-        {isEntering && (
-          <motion.div
-            className="entry-overlay"
-            initial={shouldReduceMotion ? false : { opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{
-              duration: shouldReduceMotion ? 0 : 0.25,
-            }}
-            aria-live="polite"
-          >
-            <div className="entry-overlay__content">
-              <DiceLoader onComplete={handleTransitionComplete} />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+function AppRoutes() {
+  const navigate = useNavigate();
+
+  return (
+    <Routes>
+      <Route
+        path="/"
+        element={<LandingPage onEnter={() => navigate("/lobby")} />}
+      />
+
+      <Route
+        path="/lobby"
+        element={<LobbyPage onNavigate={(destination) => navigate(`/${destination}`)} />}
+      />
+
+      <Route
+        path="/projects"
+        element={
+          <PlaceholderPage
+            title="Projects"
+            description="This section will showcase my projects, experiments, and development work."
+          />
+        }
+      />
+
+      <Route
+        path="/about"
+        element={
+          <PlaceholderPage
+            title="About Me"
+            description="This section will introduce who I am, what I care about, and what drives me as a developer."
+          />
+        }
+      />
+
+      <Route
+        path="/skills"
+        element={
+          <PlaceholderPage
+            title="Skills"
+            description="This section will showcase my technical skills, tools, and technologies."
+          />
+        }
+      />
+
+      <Route
+        path="/ai-lab"
+        element={
+          <PlaceholderPage
+            title="AI Lab"
+            description="This section will showcase AI experiments, workflows, and projects built with AI-assisted development."
+          />
+        }
+      />
+
+      <Route
+        path="/journey"
+        element={
+          <PlaceholderPage
+            title="Developer Journey"
+            description="This section will tell the story of my growth, learning process, and evolution as a developer."
+          />
+        }
+      />
+
+      <Route
+        path="/contact"
+        element={
+          <PlaceholderPage
+            title="Contact"
+            description="This section will contain my contact information and professional links."
+          />
+        }
+      />
+
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   );
 }
 
